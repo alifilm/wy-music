@@ -1,0 +1,26 @@
+.wh(@width, @height) {
+  width: @width;
+  height: @height;
+}
+.fc(@fontSize, @color) {
+  font-size: @fontSize;
+  color: @color;
+}
+.onePx(@direction) {
+  position: relative;
+  
+  &::after{
+    position: absolute;
+    content: '';
+    background-color: #e5e5e5;
+    display: block;
+    width: 100%;
+    height: 1px;
+    transform: scale(1, 0.5);
+    left: 0;
+
+    & when(@direction = 'bottom') {
+      bottom: 0;
+    }
+  }
+}
