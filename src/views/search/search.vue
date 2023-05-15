@@ -1,7 +1,7 @@
 <template>
   <div class="search">
     <TheHead bgColor="#fafafa" v-model="keyWords"></TheHead>
-    <div class="search-context">
+    <div class="search-context" v-show="ctxShow">
       <div class="flex" v-for="item in searchContext.val">
         <div><VanIcon name="search" size="18px" color="#888" /></div>
         <div class="name">{{ item.name }} {{ item.artists[0].name}}</div>
@@ -28,10 +28,11 @@
 </template>
 <script lang="ts" setup>
 import { onBeforeMount, ref, reactive, watch } from 'vue';
-import { search, serachHot, serachHotDetail, serachSuggest } from '../../api/servers/api'
+import { search, serachHot, serachHotDetail, cloudsearch } from '../../api/servers/api'
 import TheHead from '../../components/TheHead.vue'
 
 let keyWords = ref('');
+let ctxShow = ref(false);
 const searchContext = reactive<{
   val: {
     name: string;
@@ -60,9 +61,14 @@ onBeforeMount(() => {
 
 watch(keyWords, (val, oldVal) => {
   console.log(val, oldVal)
-  search(val).then(res => {
-    searchContext.val = res.result.songs.slice(0,6);
-  })
+  if (val) {
+    ctxShow.value = true;
+    search(val).then(res => {
+      searchContext.val = res.result.songs.slice(0,6);
+    })
+  } else {
+    ctxShow.value = false;
+  }
 })
 
 

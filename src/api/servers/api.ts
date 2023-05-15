@@ -16,7 +16,7 @@ const search = ( keywords = '' ) => { return service.get(`/search?keywords=${key
 const cloudsearch = (keywords = '', type = '1018', limit = 30, offset = 0, ) => { return service.get(`/cloudsearch?keywords=${keywords}&limit=${limit}&offset=${offset}&type=${type}`, {}) }
 // 热门搜索
 const serachHot = () => { return service.get('/search/hot', {}) }
-// 热门搜索详细
+// 详细热门搜索
 const serachHotDetail = () => { return service.get('/search/hot/detail', {}) }
 const serachSuggest = ( keywords = '' ) => { return service.get(`/search/suggest?keywords=${keywords}`, {}) }
 const serachMatch = ({ keywords = '' }) => { return service.get(`/search/multimatch?keywords=${keywords}`, {}) }
