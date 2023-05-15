@@ -97,6 +97,8 @@ declare type recentType = {
 };
 
 declare module 'lodash';
+
+declare module 'vue-qr/src/packages/vue-qr.vue';
 // declare module 'axios' {
 //   interface AxiosResponse<T = any> {
 //     [propName: string]: any
