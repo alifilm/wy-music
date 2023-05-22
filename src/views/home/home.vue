@@ -78,6 +78,7 @@ function goSearch() {
 <style lang="less">
 .home {
   padding: 46px 0 50px;
+  border: 1px solid #fff;
   background: linear-gradient(#fbf1ff, #fff);
 }
 .section-wrap {
